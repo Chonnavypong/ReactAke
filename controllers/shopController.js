@@ -5,7 +5,7 @@ exports.index = async (req, res, next) => {
   console.log(Shops)
 
   try {
-    const doc = await Shops.find().select(['-__v' ,'-createdAt'])
+    const doc = await Shops.find().select(['-__v', '-createdAt'])
     console.log(doc)
 
     res.status(200).json({
@@ -36,14 +36,3 @@ exports.createShop = async (req, res, next) => {
     })
   }
 }
-
-/*
-
-exports.index = async (req, res, next) => {
-  const company = await Setting.findOne()
-  console.log(company)
-  return res.status(200).json({
-    data: company
-  })
-}
-*/
