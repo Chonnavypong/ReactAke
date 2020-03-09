@@ -5,14 +5,6 @@
   "scripts": {
     "start": "nodemon ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Chonnavypong/ReactAke.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Chonnavypong/ReactAke/issues"
-  },
-  "homepage": "https://github.com/Chonnavypong/ReactAke#readme",
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
