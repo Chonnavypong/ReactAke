@@ -12,6 +12,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const settingRouter = require('./routes/setting');
 const shopRouter = require('./routes/shop');
+const menuRouter = require('./routes/menu');
 
 // Application
 const app = express();
@@ -38,6 +39,7 @@ app.use('/', indexRouter);
 app.use('/api/user', usersRouter);
 app.use('/api/setting', settingRouter);
 app.use('/api/shop', shopRouter);
+app.use('/api/menu', menuRouter);
 
 app.all('*', (req, res, next) => {
   res.status(404).json(`There have no " ${req.originalUrl} " route on this server`)

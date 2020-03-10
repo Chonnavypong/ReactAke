@@ -6,5 +6,6 @@ const userController = require('./../controllers/userController')
 /* GET users listing. */
 router.get('/', userController.index);
 router.get('/:id/fullname/:name', userController.show);
+router.post('/register', userController.register)
 
 module.exports = router;

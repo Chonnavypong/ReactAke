@@ -5,6 +5,9 @@ const shopController = require('./../controllers/shopController')
 
 router.route('/')
   .get(shopController.index)
-  .post(shopController.createShop)
+  .post(shopController.store)
+
+router.get('/menu', shopController.menu)
+router.get('/:id', shopController.getShopWithMenu)
 
 module.exports = router
