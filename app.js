@@ -1,24 +1,24 @@
-const dotenv = require('dotenv')
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose')
 
+// Config
+const config = require('./config/index')
 
+// Router
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const settingRouter = require('./routes/setting');
 const shopRouter = require('./routes/shop');
 
-dotenv.config({
-  path: './config.env'
-})
+// Application
 const app = express();
 
 
 // Database Connection
-const DB = process.env.DATABASE_URL
+const DB = config.MONGODB_URI
 mongoose.connect(DB, {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -33,6 +33,7 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Route
 app.use('/', indexRouter);
 app.use('/api/user', usersRouter);
 app.use('/api/setting', settingRouter);
