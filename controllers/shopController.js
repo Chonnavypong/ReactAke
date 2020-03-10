@@ -1,12 +1,10 @@
-const Shops = require('./../models/shopModel')
+const Shop = require('./../models/shopModel')
 
 exports.index = async (req, res, next) => {
 
-  console.log(Shops)
-
   try {
-    const doc = await Shops.find().select(['-__v', '-createdAt'])
-    console.log(doc)
+    const doc = await Shop.find().select(['-__v'])
+    // console.log(doc)
 
     res.status(200).json({
       lenght: doc.length,
@@ -25,14 +23,15 @@ exports.createShop = async (req, res, next) => {
   try {
     console.log(req.body)
 
-    const doc = await Shops.create(req.body)
+    const doc = await Shop.create(req.body)
     res.status(200).json({
       status: 'success',
       data: doc
     })
   } catch (err) {
     res.send(404).json({
-      status: 'Error'
+      status: 'Error',
+      message: err.message
     })
   }
 }
