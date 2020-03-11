@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
+const config = require('./../config/index')
 
 const schema = new mongoose.Schema({
   name: {
@@ -40,8 +41,9 @@ schema.pre('save', async function (next) {
   this.password = await bcrypt.hash(this.password, salt)
 })
 
-schema.methods.correctPassword = async function (dbPassword, inputPassword) {
-  return await bcrypt.compare(dbPassword, inputPassword)
+schema.methods.validPassword = async function (password) {
+  const isValid = await bcrypt.compare(password, this.password)
+  return isValid
 }
 
 module.exports = mongoose.model('User', schema)
